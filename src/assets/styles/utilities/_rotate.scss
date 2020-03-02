@@ -1,0 +1,11 @@
+.#{$utilityClass}-rotate {
+	@each $rotate in $rotate-indices {
+		&-#{$rotate} {
+			transform: rotate(#{$rotate}deg);
+		}
+
+		&-#{$rotate}-negative {
+			transform: rotate(-#{$rotate}deg);
+		}
+	}
+}

@@ -1,0 +1,27 @@
+$row: 'row';
+
+.#{$row} {
+    &--seamless-mobile {
+        margin: 0 -#{$ezpz-gutter};
+
+        &-half {
+            margin: 0 -#{$ezpz-gutter / 2};
+
+            @include respond-to(small) {
+                margin: 0;
+            }
+        }
+
+        @include respond-to(small) {
+            margin: 0;
+        }
+    }
+
+    &--seamless {
+        margin: 0 -#{$ezpz-gutter};
+
+        &-half {
+            margin: 0 -#{$ezpz-gutter / 2};
+        }
+    }
+}

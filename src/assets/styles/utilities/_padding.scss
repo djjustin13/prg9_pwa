@@ -1,0 +1,29 @@
+$padding-list: (
+    h: 1 2 3,
+    v: 1 2 3,
+    bottom: 1 2 3
+);
+
+.#{utilityClass}-padding-0 {
+	padding: 0;
+}
+
+@each $direction, $multipliers in $padding-list {
+	@each $multiplier in $multipliers {
+        @if $direction == 'v' {
+            .#{$utilityClass}-padding-#{$direction}-#{$multiplier} {
+                padding: space($multiplier) 0;
+            }
+        }
+        @else if $direction == 'h' {
+            .#{$utilityClass}-padding-#{$direction}-#{$multiplier} {
+                padding: 0 space($multiplier);
+            }
+        }
+        @else {
+            .#{$utilityClass}-padding-#{$direction}-#{$multiplier} {
+                padding-#{$direction}: space($multiplier);
+            }
+        }
+	}
+}

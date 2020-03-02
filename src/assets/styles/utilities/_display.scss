@@ -1,0 +1,104 @@
+%visually-hidden {
+    position: absolute !important;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+.#{$utilityClass}-d {
+	&-block {
+		display: block;
+	}
+
+	&-inline-block {
+		display: inline-block;
+	}
+
+	&-visually-hidden {
+		@extend %visually-hidden;
+	}
+
+	&-visibility-hidden {
+		visibility: hidden;
+	}
+
+	&-flex {
+		display: flex !important;
+
+		&-flow {
+			&-column {
+				flex-flow: column;
+			}
+
+			&-row {
+				flex-flow: row;
+
+				&-reverse {
+					flex-flow: row-reverse;
+				}
+			}
+		}
+
+		&-vertical {
+			&-center {
+				align-items: center;
+			}
+		}
+
+		&-content {
+			&-center {
+				justify-content: center;
+			}
+
+			&-end {
+				justify-content: flex-end;
+			}
+
+			&-space-between {
+				justify-content: space-between;
+			}
+		}
+
+		&-items {
+			&-center {
+				align-items: center;
+			}
+		}
+
+		&-wrap {
+			flex-wrap: wrap;
+		}
+
+		&-grow {
+			flex: 1;
+		}
+	}
+
+	&-none {
+		display: none;
+	}
+
+	&-position {
+		&-absolute {
+			position: absolute;
+		}
+	}
+
+	&-full {
+		&-height {
+			height: 100%;
+		}
+	}
+
+	&-not-allowed {
+		cursor: not-allowed;
+	}
+
+	&-disabled {
+		opacity: 0.4;
+		pointer-events: none;
+		user-select: none;
+	}
+}

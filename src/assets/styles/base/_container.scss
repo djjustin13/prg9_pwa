@@ -1,0 +1,11 @@
+$container: 'container';
+
+.#{$container} {
+    width: calc(100% - #{$ezpz-gutter / 2});
+	max-width: 90rem;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: #{$ezpz-gutter / 4};
+	padding-right: #{$ezpz-gutter / 4};
+	box-sizing: border-box;
+}

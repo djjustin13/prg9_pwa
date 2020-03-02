@@ -1,0 +1,12 @@
+$module: 'grid';
+
+.#{$module} {
+    &--gutter-1\/2.#{$module} {
+        margin-left: -#{$ezpz-gutter / 4};
+        margin-right: -#{$ezpz-gutter / 4};
+
+        > .cell {
+            padding: 0 #{$ezpz-gutter / 4};
+        }
+    }
+}

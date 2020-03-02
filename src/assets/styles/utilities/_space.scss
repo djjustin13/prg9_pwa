@@ -1,0 +1,80 @@
+$space-list: (
+	top: 0 1 2 3 4,
+	right: 0 1 2 3,
+	bottom: 0 1 2 3 4 5,
+	left: 0 1 2,
+	h: 1,
+	v: 1 2
+);
+
+.#{utilityClass}-space-0 {
+	margin: 0;
+}
+
+@each $direction, $multipliers in $space-list {
+	@each $multiplier in $multipliers {
+		@if $direction == 'v' {
+            .#{$utilityClass}-space-#{$direction}-#{$multiplier} {
+				margin-top: space($multiplier);
+				margin-bottom: space($multiplier);
+            }
+        }
+        @else if $direction == 'h' {
+            .#{$utilityClass}-space-#{$direction}-#{$multiplier} {
+				margin-left: space($multiplier);
+				margin-right: space($multiplier);
+            }
+        }
+        @else {
+			.#{$utilityClass}-space-#{$direction}-#{$multiplier} {
+				margin-#{$direction}: space($multiplier);
+
+				&.#{$utilityClass}-space-half {
+					margin-#{$direction}: space($multiplier / 2);
+				}
+			}
+		}
+	}
+}
+
+@include respond-to(tiny) {
+	@each $direction, $multipliers in $space-list {
+		@each $multiplier in $multipliers {
+			.#{$utilityClass}-space-tiny-#{$direction}-#{$multiplier} {
+				margin-#{$direction}: space($multiplier);
+
+				&.#{$utilityClass}-space-tiny-half {
+					margin-#{$direction}: space($multiplier / 2);
+				}
+			}
+		}
+	}
+}
+
+@include respond-to(small) {
+	@each $direction, $multipliers in $space-list {
+		@each $multiplier in $multipliers {
+			.#{$utilityClass}-space-small-#{$direction}-#{$multiplier} {
+				margin-#{$direction}: space($multiplier);
+
+				&.#{$utilityClass}-space-small-half {
+					margin-#{$direction}: space($multiplier / 2);
+				}
+			}
+		}
+	}
+}
+
+@include respond-to(medium) {
+	@each $direction, $multipliers in $space-list {
+		@each $multiplier in $multipliers {
+			.#{$utilityClass}-space-medium-#{$direction}-#{$multiplier} {
+				margin-#{$direction}: space($multiplier);
+
+				&.#{$utilityClass}-space-medium-half {
+					margin-#{$direction}: space($multiplier / 2);
+				}
+			}
+		}
+	}
+}

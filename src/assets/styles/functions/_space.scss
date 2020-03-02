@@ -1,0 +1,6 @@
+// Given a multiplier, give back a spacing value based on a default
+// unit of spacing.
+
+@function space($multiplier: 1, $unit: $space-unit) {
+	@return if($multiplier == 0, 0, $multiplier * $space-unit);
+}

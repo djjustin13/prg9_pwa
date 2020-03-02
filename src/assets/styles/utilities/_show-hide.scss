@@ -1,0 +1,42 @@
+[class*='#{$utilityClass}-show-'] {
+    display: none !important;
+}
+
+// This is to be able to get the current breakpoint from JavaScript,
+// while only having to maintain them in the CSS:
+body::after {
+    display: none;
+    content: 'none';
+}
+
+@each $breakpoint in $breakpoints {
+    $bp-name: nth($breakpoint, 1);
+
+    @include respond-to($bp-name) {
+        // This is to be able to get the current breakpoint from JavaScript,
+        // while only having to maintain them in the CSS:
+        body::after {
+            content: $bp-name;
+        }
+
+        .#{$utilityClass}-show-from-#{$bp-name} {
+            display: block !important;
+        }
+
+        .#{$utilityClass}-show-flex-from-#{$bp-name} {
+            display: flex !important;
+        }
+
+        .#{$utilityClass}-show-inline-block-from-#{$bp-name} {
+            display: inline-block !important;
+        }
+
+        .#{$utilityClass}-show-inline-flex-from-#{$bp-name} {
+            display: inline-flex !important;
+        }
+
+        .#{$utilityClass}-hide-from-#{$bp-name} {
+            display: none !important;
+        }
+    }
+}
