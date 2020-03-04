@@ -35,7 +35,7 @@ self.addEventListener('fetch', (event) => {
             if (!navigator.onLine)
                 return caches.match(new Request('/index.html'))
             
-            return fetchAndUpdate(event.request)
+            return fetch(event.request)
             
         })
     )
