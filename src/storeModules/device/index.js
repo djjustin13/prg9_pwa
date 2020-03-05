@@ -5,7 +5,8 @@ import mutations from './mutations';
 const namespaced = true;
 
 const state = {
-	mobile: false
+	mobile: false,
+	network: "online"
 };
 
 export default {

@@ -7,7 +7,9 @@ self.addEventListener('install', (event) => {
             return cache.addAll([
                 'index.html',
                 '/js/app.js',
-                '/js/chunk-vendors.js'
+                '/js/chunk-vendors.js',
+                '/img/svg/online.svg',
+                '/img/svg/offline.svg'
             ])
         })
     )

@@ -4,20 +4,26 @@
             <span class="header__content__logo">CMGT</span>
             <nav class="header__content__nav">
                 <router-link to="/">Home</router-link>
-                <router-link to="/projecten">Projecten</router-link>
+                <!-- <router-link to="/projecten">Projecten</router-link> -->
             </nav>
+            <img :src="`/img/svg/${network}.svg`" alt="Network status" class="header__content__signal">
         </div>
         
     </div>
 </template>
 
 <script>
-export default {
-    name: 'JstHeader',
-    components: {
-
+    import { mapGetters } from 'vuex';
+    export default {
+        name: 'JstHeader',
+        components: {
+        },
+        computed: {
+            ...mapGetters({
+                network: 'device/network'
+            })
+        }
     }
-}
 </script>
 
 <style lang="scss">
@@ -52,6 +58,10 @@ export default {
                     color: $white;
                     padding: 0 space(2)
                 }
+            }
+
+            &__signal {
+                height: 50%;
             }
         }
 

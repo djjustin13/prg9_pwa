@@ -9,6 +9,7 @@
 
 <script>
 import JstHeader from "@/components/Header";
+import { mapActions } from 'vuex';
 
 export default {
     name: 'App',
@@ -16,14 +17,19 @@ export default {
         JstHeader
     },
     mounted() {
-        console.log(navigator.onLine ? "online" : "offline")
+        this.setNetworkStatus()
         window.addEventListener('online',  ()=>{
-            console.log('online')
+            this.setNetworkStatus()
         });
          window.addEventListener('offline',  ()=>{
-            console.log('offline')
+            this.setNetworkStatus()
         });
-    }
+    },
+    methods: {
+        ...mapActions({
+            setNetworkStatus: 'device/setNetworkStatus'
+        })
+    },
 }
 </script>
 

@@ -2,10 +2,11 @@
 // import store from '@/store';
 // import router from "@/router";
 
-const doSomething = ( { commit } ) => {
-    //
+const setNetworkStatus = ( { commit } ) => {
+    let status = navigator.onLine ? "online" : "offline"
+    commit('SET_NETWORK', status)
 }
 
 export default {
-    
+    setNetworkStatus
 }
