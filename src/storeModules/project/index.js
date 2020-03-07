@@ -5,7 +5,8 @@ import mutations from './mutations';
 const namespaced = true;
 
 const state = {
-	projects: {}
+	projects: {},
+	current_project: {}
 };
 
 export default {

@@ -10,22 +10,45 @@ const storageInstance = localforage.createInstance({
     name: 'projects'
 })
 
+const setCurrentProject = ({ commit }, key) => {
+    storageInstance.getItem(key)
+    .then((result => {
+        commit('SET_CURRENT_PROJECT', result)
+    }))
+    .catch((error) => {
+        console.log(error)
+    })
+}
+
+const callProjectsAPI = () => {
+    return new Promise((resolve, reject) => {
+        API.get(endpoints.PROJECTS)
+        .then((data) => {
+            resolve(data)
+        })
+        .catch((error) => {
+            reject()
+        })
+        setTimeout(() => reject(), 3000);
+    })
+}
+
 const fetchProjects = ( { dispatch } ) => {
-    API.get(endpoints.PROJECTS)
+    callProjectsAPI()
     .then((data) => {
         let obj = {}
         data.projects.forEach(project => {
             obj[project._id] = project
         });
         storageInstance.setItems(obj)
-        dispatch('loadProjects')
+        commit('SET_PROJECTS', obj)
     })
-    .catch((error) => {
-        dispatch('loadProjects')
+    .catch(() => {
+        dispatch('loadOfflineProjects')
     })
 }
 
-const loadProjects = ( { commit } ) => {
+const loadOfflineProjects = ( { commit } ) => {
     storageInstance.keys()
     .then((keys) => {
         if (keys.length > 0) {
@@ -43,5 +66,6 @@ const loadProjects = ( { commit } ) => {
 
 export default {
     fetchProjects,
-    loadProjects
+    loadOfflineProjects,
+    setCurrentProject
 }

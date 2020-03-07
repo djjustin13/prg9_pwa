@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="header__content container">
-            <span class="header__content__logo">CMGT</span>
+            <router-link to="/"><span class="header__content__logo">CMGT</span></router-link>
             <nav class="header__content__nav">
                 <router-link to="/">Home</router-link>
                 <!-- <router-link to="/projecten">Projecten</router-link> -->
@@ -46,6 +46,7 @@
 
             &__logo {
                 font-size: $font-size-xl;
+                color: $white;
             }
 
             &__nav {

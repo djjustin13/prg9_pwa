@@ -6,7 +6,7 @@ const namespaced = true;
 
 const state = {
 	mobile: false,
-	network: "online"
+	network: "offline"
 };
 
 export default {

@@ -1,4 +1,4 @@
-const version = 'v3'
+const version = 'v5'
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
@@ -9,7 +9,8 @@ self.addEventListener('install', (event) => {
                 '/js/app.js',
                 '/js/chunk-vendors.js',
                 '/img/svg/online.svg',
-                '/img/svg/offline.svg'
+                '/img/svg/offline.svg',
+                '/img/nointernet.jpg'
             ])
         })
     )

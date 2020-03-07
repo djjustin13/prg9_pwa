@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-export const mutations = {
+export default {
     SET_MOBILE (state, payload) {
         Vue.set(state, 'mobile', payload);
     },
@@ -8,5 +8,3 @@ export const mutations = {
         Vue.set(state, 'network', payload);
     }
 };
-
-export default mutations;
