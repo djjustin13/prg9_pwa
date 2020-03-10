@@ -4,6 +4,14 @@
             <div class="project-detail__header">
                 <img :src="imageSrc" alt="" @error="loadDefaultImage">
             </div>
+            <div>
+                <h1>{{ currentProject.title }}</h1>
+                <h3>{{ currentProject.tagline }}</h3>
+                <hr>
+                <tag-list :tags="currentProject.tags" />
+                <hr>
+                <p>{{ currentProject.description }}</p>
+            </div>
         </template>
         <template v-else>
             <h1>Loading...</h1>
@@ -12,54 +20,55 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+    import TagList from '@/components/TagList'
+    import { mapActions, mapGetters } from 'vuex';
 
-export default {
-    name: 'ProjectDetail',
-    props: {
-        id : {
-            type: String,
-            default: ''
-        }
-    },
-    components: {
-
-    },
-    data: () => ({
-            placeholder: '/img/nointernet.jpg',
-            maxTries: 2,
-            currentTry: 1,
-            imageLoaded: true,
-    }),
-    created () {
-        this.setCurrentProject(this.id)
-    },
-    methods: {
-         ...mapActions({
-            setCurrentProject: 'project/setCurrentProject'
-        }),
-        loadDefaultImage (event) {
-            this.currentTry++;
-            if (this.currentTry >= this.maxTries) {
-                this.imageLoaded = false
-                return;
+    export default {
+        name: 'ProjectDetail',
+        props: {
+            id : {
+                type: String,
+                default: ''
             }
-        }
-    },
-    computed: {
-        ...mapGetters({
-            currentProject: 'project/current_project',
-            network: 'device/network'
+        },
+        components: {
+            TagList
+        },
+        data: () => ({
+                placeholder: '/img/nointernet.jpg',
+                maxTries: 2,
+                currentTry: 1,
+                imageLoaded: true,
         }),
-        imageSrc() {
-            if (this.network === 'online' || this.imageLoaded) {
-                this.imageLoaded = true
-                return 'https://cmgt.hr.nl:8000/' + this.currentProject.headerImage
+        created () {
+            this.setCurrentProject(this.id)
+        },
+        methods: {
+            ...mapActions({
+                setCurrentProject: 'project/setCurrentProject'
+            }),
+            loadDefaultImage (event) {
+                this.currentTry++;
+                if (this.currentTry >= this.maxTries) {
+                    this.imageLoaded = false
+                    return;
+                }
             }
-            return this.placeholder
-        }
-    },
-}
+        },
+        computed: {
+            ...mapGetters({
+                currentProject: 'project/current_project',
+                network: 'device/network'
+            }),
+            imageSrc() {
+                if (this.network === 'online' || this.imageLoaded) {
+                    this.imageLoaded = true
+                    return 'https://cmgt.hr.nl:8000/' + this.currentProject.headerImage
+                }
+                return this.placeholder
+            }
+        },
+    }
 </script>
 
 <style lang="scss">

@@ -6,7 +6,8 @@ const namespaced = true;
 
 const state = {
 	projects: {},
-	current_project: {}
+	current_project: {},
+	tags: []
 };
 
 export default {

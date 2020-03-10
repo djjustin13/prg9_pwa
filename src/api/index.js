@@ -1,9 +1,9 @@
 import endpoints from './endpoints';
 
 const baseData = {
-    headers: {
-        'Content-Type': 'application/json'
-    }
+    // headers: {
+    //     'Content-Type': 'application/json',
+    // },
 }
 
 const API = {

@@ -48,6 +48,16 @@ const fetchProjects = ( { dispatch } ) => {
     })
 }
 
+const fetchTags = ( { commit } ) => {
+    API.get(endpoints.TAGS)
+    .then((data) => {
+        commit('SET_TAGS', data.tags)
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+}
+
 const loadOfflineProjects = ( { commit } ) => {
     storageInstance.keys()
     .then((keys) => {
@@ -67,5 +77,6 @@ const loadOfflineProjects = ( { commit } ) => {
 export default {
     fetchProjects,
     loadOfflineProjects,
-    setCurrentProject
+    setCurrentProject,
+    fetchTags
 }

@@ -6,6 +6,7 @@ self.addEventListener('install', (event) => {
         .then((cache) => {
             return cache.addAll([
                 'index.html',
+                '/css/app.css',
                 '/js/app.js',
                 '/js/chunk-vendors.js',
                 '/img/svg/online.svg',
@@ -40,6 +41,9 @@ self.addEventListener('fetch', (event) => {
             
             return fetch(event.request)
             
+        })
+        .catch((error) => {
+            console.log(error)
         })
     )
 })

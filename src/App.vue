@@ -18,10 +18,10 @@ export default {
     },
     mounted() {
         this.setNetworkStatus()
-        window.addEventListener('online',  ()=>{
+        window.addEventListener('online',  () => {
             this.setNetworkStatus()
         });
-         window.addEventListener('offline',  ()=>{
+         window.addEventListener('offline',  () => {
             this.setNetworkStatus()
         });
     },
